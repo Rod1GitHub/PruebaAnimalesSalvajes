@@ -43,4 +43,11 @@ class Aguila extends Animal {
   }
 }
 
-export { Leon, Lobo, Aguila, Oso, Serpiente };
+//AnimalIndistinto
+class AnimalIndistinto extends Animal {
+  EmitirSonido() {
+    reproducirSonido(this.sonido);
+  }
+}
+
+export { Leon, Lobo, Aguila, Oso, Serpiente, AnimalIndistinto };

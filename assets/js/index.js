@@ -1,7 +1,5 @@
-import { Leon, Lobo, Aguila, Oso, Serpiente } from "./clases/Tipos.js";
-
-
-
+import { Leon, Lobo, Aguila, Oso, Serpiente, AnimalIndistinto } from "./clases/Tipos.js";
+// 1. Validación de formulario
 const validarFormulario = () => {
   let animal = document.getElementById("animal").value;
   let edad = document.getElementById("edad").value;
@@ -16,6 +14,7 @@ const validarFormulario = () => {
   }
 };
 
+// Capturar input y crear objeto de animal creado
 const crearObjAnimal = (valueAnimal) => {
   let animal = document.getElementById("animal").value;
   let edad = document.getElementById("edad").value;
@@ -73,7 +72,7 @@ const crearObjAnimal = (valueAnimal) => {
     default:
       break;
   }
-  return obj;
+  return obj;  
 };
 
 const obtenerDatos = async () => {
@@ -82,7 +81,8 @@ const obtenerDatos = async () => {
   const json = await response.json();
   return json.animales;
 };
-// // Función autoejecutante
+
+// Función autoejecutante
 (async () => {
   const data = await obtenerDatos();
   const arregloAnimales = [];
@@ -111,38 +111,63 @@ const obtenerDatos = async () => {
   });
 })();
 
+
 const generarCard = (arregloAnimales) => {
   const divAnimales = document.getElementById("Animales");
   divAnimales.innerHTML = "";
 
   let cardString = "";
   arregloAnimales.forEach((element, index) => {
+    console.log(element)
+    console.log(index)
     cardString = `
     <div id="div-animal-${index}" class="card">
   <img src="${element.img}" class="card-img-top" alt="...">
+  <p>${element.nombre}</p>
+  <p>${element.edad}</p>
+  <p>${element.img}</p>
+  <p>${element.comentarios}</p>
+  <p>${element.sonido}</p>
   <div class="card-body">
-     <a href="#" id="Rodrigo" class="btn btn-primary d-flex">Sonido</a>
+     <a href="#" id="Rodrigo-${index}" class="btn btn-primary d-flex">Sonido</a>
   </div>
 </div>
-    `;
+    `
+    ;
 
     const div = document.createElement("div");
     div.innerHTML = cardString;
     divAnimales.appendChild(div);
 
-    // Aca
+    console.log(cardString)
+
+    let queSonido = (element.sonido)
+    document.getElementById(`Rodrigo-${index}`).addEventListener("click", e => {
+    e.preventDefault()
+
+    const animalSelecionado = new AnimalIndistinto("", "", "", "", `${queSonido}`);
+    animalSelecionado.EmitirSonido();
+    }
+);
+
+
+
+
   });
+
+
+  
 
   const addEventCard = (_) => {
     //document.getClassName foreach eventlistener
   };
 
-document.getElementById("Rodrigo").addEventListener("click", () => {
 
-const testLeon = new Leon("", "", "", "", "Rugido.mp3");
-testLeon.Rugir();
 
-});
+
+
+
+
 };
 
 
