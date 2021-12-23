@@ -129,7 +129,7 @@ const generarCard = (arregloAnimales) => {
   <p>${element.comentarios}</p>
   <p>${element.sonido}</p>
   <div class="card-body">
-     <a href="#" id="Rodrigo-${index}" class="btn btn-primary d-flex">Sonido</a>
+     <a href="#" id="Rodrigo-${index}" class="btn btn-primary d-flex">Sonido ${element.nombre}</a>
   </div>
 </div>
     `
