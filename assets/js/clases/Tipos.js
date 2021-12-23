@@ -1,6 +1,7 @@
 import Animal from "./Animal.js";
 
 function reproducirSonido(sonido) {
+  
   let player = document.getElementById("player");
   const rutaObjeto = `./assets/sounds/${sonido}`;
   player.setAttribute("src", rutaObjeto);
