@@ -4,6 +4,7 @@ function reproducirSonido(sonido) {
   let player = document.getElementById("player");
   const rutaObjeto = `./assets/sounds/${sonido}`;
   player.setAttribute("src", rutaObjeto);
+  player.play();
 }
 
 //León
@@ -41,4 +42,4 @@ class Aguila extends Animal {
   }
 }
 
-export { Leon, Lobo, Aguila, Oso, Serpiente};
+export { Leon, Lobo, Aguila, Oso, Serpiente };
